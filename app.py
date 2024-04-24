@@ -4,10 +4,9 @@ import sqlite3
 app = Flask(__name__)
 
 # Function to create database and table
-def create_table():
-    conn = sqlite3.connect('students.db')
-    cursor = conn.cursor()
-    cursor.execute('''CREATE TABLE IF NOT EXISTS students (
+conn = sqlite3.connect('students.db')
+cursor = conn.cursor()
+cursor.execute('''CREATE TABLE IF NOT EXISTS students (
                     id INTEGER PRIMARY KEY,
                     name TEXT NOT NULL,
                     age INTEGER NOT NULL,
@@ -17,8 +16,8 @@ def create_table():
                     subject4 INTEGER NOT NULL,
                     subject5 INTEGER NOT NULL
                     )''')
-    conn.commit()
-    conn.close()
+conn.commit()
+conn.close()
 
 # Home page - display all students
 @app.route('/')
